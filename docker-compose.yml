@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: thalissoncastrog/postgres:1.0.0
+    environment:
+      POSTGRES_USER: <SUPERUSER_NAME>
+      POSTGRES_PASSWORD: <SUPERUSER_PASSWORD>
+      POSTGRES_DB: <DATABASE_NAME>
+      USER_NAME: <USER_NAME>
+      USER_PASSWORD: <USER_PASSWORD>
+    ports:
+      - "5433:5432"
+    networks:
+      app-network:
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  data:
+
+networks:
+  app-network:
+    driver: bridge
